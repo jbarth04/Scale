@@ -25,11 +25,18 @@ def writeScaleTaskToS3():
     )
 
     print("Init S3")
+
+    print(request)
     
     ## Grab the callback JSON task sent from Scale
     task_json = request.get_json()
+    print(task_json)
+
     task_id = task_json.get('task_id')
+    print(task_id)
+
     task_json_serialized = json.dumps(task_json)
+    print(task_json_serialized)
 
     try:
 
