@@ -6,6 +6,12 @@ import json
 import boto3
 from botocore.exceptions import ClientError
 
+
+## NOTE: Set following variables in your env to run locally (with values filled in)
+##  export S3_ACCESS_KEY="your_s3_access_key"
+##  export S3_SECRET_KEY="your_s3_secret_key"
+##  export S3_REGION="your_s3_region"
+##  export S3_BUCKET="your_s3_bucket"
 app = Flask(__name__)
 
 ## Index page, nothing fancy here
@@ -75,10 +81,6 @@ def getScaleTaskFromS3(task_id):
         return jsonify([{'status':500, 'error':'Something went wrong reading scale task from S3'}])
 
 ## Returns initialized S3 client
-## Set following variables in your env to run locally (with values filled in)
-##  export S3_ACCESS_KEY="your_s3_access_key"
-##  export S3_ACCESS_KEY="your_s3_secret_key"
-##  export S3_ACCESS_KEY="your_s3_region"
 def getS3Client():
     return boto3.client('s3',
         aws_access_key_id=os.environ['S3_ACCESS_KEY'],

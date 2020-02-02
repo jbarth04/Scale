@@ -2,6 +2,8 @@ import requests
 import json
 import os
 
+## NOTE: Set following variables in your env to run locally (with values filled in)
+##  export SCALE_API_KEY="your_scale_api_key"
 def main():
     print("Starting Scale polygon annotation with S3 callback")
 
