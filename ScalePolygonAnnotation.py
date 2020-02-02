@@ -22,7 +22,9 @@ def main():
         auth=(os.environ['SCALE_API_KEY'], '')
     )
 
-    print(task_request)
+    task_response = task_request.json()
+    task_id = { 'task_id': task_response['task_id'] }
+    print(task_id)
 
 if __name__ == "__main__":
     main()
