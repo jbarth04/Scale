@@ -39,17 +39,17 @@ I wrote this demo so that anyone can clone this repo and set up their own Heroku
     - You can either create a new s3 bucket or use an existing one, and you can choose the default configuration options and permissions https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html  
     
     
-    - In the browser console under your username in the top nav, click "My security credentials".  You will get a pop-up that says you are acessing security credentials that provide unlimited access to your AWS resources and suggests using IAM access instead.  If you are a wizard in AWS IAM credentials, feel free to PR this repo with better instructions.  This AWS credential setup is only recommended for small tinkering apps.  Keeping this in mind, we will create an access key ID and secret access key pair and will take extra caution to set local environment variables only and never push these credentials to GitHub.
+    - In the browser console under your username in the top nav, click "My security credentials".  You will get a pop-up that says you are accessing security credentials that provide unlimited access to your AWS resources and suggests using IAM access instead.  If you are a wizard in AWS IAM credentials, feel free to PR this repo with better instructions.  This AWS credential setup is only recommended for small tinkering apps.  Keeping this in mind, we will create an access key ID and secret access key pair and will take extra caution to set local environment variables only and never push these credentials to GitHub.
 
 1. Fork this repo and clone into your local workspace: https://github.com/jbarth04/Scale
 
-1. Set up a virtual envrionment `virtualenv` in the local git directory you'll be working installed via `pip`, instructions: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/.  Although this step isn't absolutely necessary, it is highly recommended for a few reasons:
+1. Set up a virtual environment `virtualenv` in the local git directory you'll be working installed via `pip`, instructions: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/.  Although this step isn't absolutely necessary, it is highly recommended for a few reasons:
 
-    - You can isolate your run environment to use specific versions of dependencies without having to worry about breaking dependenices of any existing projects
+    - You can isolate your run environment to use specific versions of dependencies without having to worry about breaking dependencies of any existing projects
     
     - We will set app specific environment variables and these will also be isolated from your global configs
     
-1. Make sure your virtual environment is activate (e.g. `$source <my_virtualenv>/bin/activate`), and then install the required runtime dependenices via:
+1. Make sure your virtual environment is activated (e.g. `$source <my_virtualenv>/bin/activate`), and then install the required runtime dependencies via:
 
     `$ pip install -r requirements.txt`
     
@@ -80,11 +80,11 @@ I wrote this demo so that anyone can clone this repo and set up their own Heroku
 
 1. Assuming you can already log into your Heroku Dashboard and have the CLI installed, you can follow these instructions https://devcenter.heroku.com/articles/git
 
-    - Note, if you want you specify you own app name, instead of running `$ heroku create`, run `$ heroku apps:create my-unique-app-name`, docs here https://devcenter.heroku.com/articles/heroku-cli-commands
+    - Note, if you want you specify your own app name, instead of running `$ heroku create`, run `$ heroku apps:create my-unique-app-name`, docs here https://devcenter.heroku.com/articles/heroku-cli-commands
     
-1. Go to your Heroku dashboard and click on your app.  In the `Settings` tab, you'll want to click `Reveal Configs Var` and add your AWS accessKeyId, AWS secretKey, AWS bucket name, and AWS bucket region as key/value pairs, similar to how we exported those configs in our local env.
+1. Go to your Heroku dashboard and click on your app.  In the `Settings` tab, you'll want to click `Reveal Configs Var` and add your AWS accessKeyId, AWS secretKey, AWS bucket name, and AWS bucket region as key/value pairs, similar to how we exported those configs in our local environment.
 
-1. At this point, we assume that you've deployed your app via  `$ git push heroku master` and now we'll get one instance of the app running, docs https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app.  There's a couple things happeneing here:
+1. At this point, we assume that you've deployed your app via  `$ git push heroku master` and now we'll get one instance of the app running, docs https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app.  There's a couple things happening here:
 
     - First, we've already defined and deployed our [Procfile](https://github.com/jbarth04/Scale/blob/master/Procfile), which defines the commands that are executed when an instance of our app is spun up, docs https://devcenter.heroku.com/articles/procfile
     
@@ -97,3 +97,4 @@ I wrote this demo so that anyone can clone this repo and set up their own Heroku
 1. Locally, run `$ python3 ScalePolygonAnnotation.py`.  You'll get a response in the format `{'task_id': '123456789'}`.  Copy the `task_id` value.  Then go to `https://<your-app>.herokuapp.com/scale/task/<task_id>` and verify you can fetch your `task` response from s3.  You should also see in your AWS S3 bucket a corresponding file named after the `<task_id>`.  
 
 1. That's it! Thanks for making it this far.  If there were any steps I missed, please share your debugging woes by opening an issue or email me at josie.barth@gmail.com.
+
