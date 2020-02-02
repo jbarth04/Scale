@@ -15,7 +15,7 @@ def helloWorld():
 @app.route('/scale/callback', methods=['POST']) 
 def writeScaleTaskToS3():
 
-    print "In /scale/callback"
+    print("In /scale/callback")
 
     ## Initialize S3 client
     s3_client = boto3.client('s3',
@@ -24,7 +24,7 @@ def writeScaleTaskToS3():
         region_name=os.environ['S3_REGION']
     )
 
-    print "Init S3"
+    print("Init S3")
     
     ## Grab the callback JSON task sent from Scale
     task_json = request.get_json()
@@ -33,7 +33,7 @@ def writeScaleTaskToS3():
 
     try:
 
-        print "Write to S3"
+        print("Write to S3")
 
         ## Write the task to S3
         response = s3_client.put_object(
@@ -43,7 +43,7 @@ def writeScaleTaskToS3():
         );
         return jsonify([{'status':200, 'message':'Scale task written to S3'}])
     except ClientError as e: 
-        print "Fail write to S3"
+        print("Fail write to S3")
 
         ## Log in case of error
         print(e)
