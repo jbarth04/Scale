@@ -98,3 +98,7 @@ I wrote this demo so that anyone can clone this repo and set up their own Heroku
 
 1. That's it! Thanks for making it this far.  If there were any steps I missed, please share your debugging woes by opening an issue or email me at josie.barth@gmail.com.
 
+## Contact
+
+For any questions about this repository, please reach out to **Josie Barth** at josie.barth@gmail.com.
+
