@@ -11,7 +11,7 @@ from botocore.exceptions import ClientError
 ##  export S3_ACCESS_KEY="your_s3_access_key"
 ##  export S3_SECRET_KEY="your_s3_secret_key"
 ##  export S3_REGION="your_s3_region"
-##  export S3_BUCKET="your_s3_bucket"
+##  export S3_BUCKET_NAME="your_s3_bucket_name"
 app = Flask(__name__)
 
 ## Index page, nothing fancy here
@@ -30,6 +30,9 @@ def writeScaleTaskToS3():
     ## Grab the JSON task sent from Scale
     task_json = request.get_json(force=True)
     task_id = task_json.get('task_id')
+    if isEmpty(task_id):
+        return jsonify([{'status':400, 'error':'task_id cannot be empty or blank'}])
+
     task_json_serialized = json.dumps(task_json)
 
     ## Initialize S3 client
